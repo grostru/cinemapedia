@@ -1,10 +1,8 @@
+import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:animate_do/animate_do.dart';
-
 import 'package:cinemapedia/domain/entities/movie.dart';
-
-import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:cinemapedia/presentation/providers/movies/movie_info_provider.dart';
 
 class MovieScreen extends ConsumerStatefulWidget {
@@ -24,7 +22,7 @@ class MovieScreenState extends ConsumerState<MovieScreen> {
     super.initState();
 
     ref.read(movieInfoProvider.notifier).loadMovie(widget.movieId);
-    //ref.read(actorsByMovieProvider.notifier).loadActors(widget.movieId);
+    ref.read(actorsByMovieProvider.notifier).loadActors(widget.movieId);
   }
 
   @override
@@ -112,7 +110,7 @@ class _MovieDetails extends StatelessWidget {
           ),
         ),
 
-       // _ActorsByMovie(movieId: movie.id.toString()),
+       _ActorsByMovie(movieId: movie.id.toString()),
 
         const SizedBox(height: 50),
       ],
@@ -120,7 +118,6 @@ class _MovieDetails extends StatelessWidget {
   }
 }
 
-/*
 class _ActorsByMovie extends ConsumerWidget {
   final String movieId;
 
@@ -183,7 +180,7 @@ class _ActorsByMovie extends ConsumerWidget {
     );
   }
 }
-*/
+
 
 class _CustomSliverAppBar extends StatelessWidget {
   final Movie movie;
